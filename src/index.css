@@ -42,15 +42,7 @@ body {
   font-size: 0.875rem;
   line-height: 1.5;
 }
-.orbitron-font {
-  font-family: "Orbitron", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 700;
-  font-style: normal;
-}
-.font-poppins {
-  font-family: "Poppins", sans-serif;
-}
+
 h1,
 h2,
 h3,
