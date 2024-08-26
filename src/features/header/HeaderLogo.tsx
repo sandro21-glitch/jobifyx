@@ -2,7 +2,7 @@ import logo from "../../../public/logo/logo-no-background.svg";
 
 const HeaderLogo = () => {
   return (
-    <div className=" section-center ">
+    <div className=" section-center flex items-center justify-between">
       <div className="flex items-center">
         <img src={logo} alt="logo" className="w-[8rem] h-auto py-5" />
         <div className="w-[1px] h-full bg-primary mx-5 py-5">&nbsp;</div>
