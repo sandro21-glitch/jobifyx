@@ -5,7 +5,6 @@ import FavoriteIcon from "./FavoriteIcon";
 const Navbar = () => {
   return (
     <header
-      style={{ marginTop: "1.5rem" }}
       className="section-center bg-primary rounded-md"
     >
       <nav className="flex items-center justify-between">
