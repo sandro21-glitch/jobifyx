@@ -1,9 +1,37 @@
-
+import React, { useState } from "react";
 
 const VacancyType = () => {
-  return (
-    <div>VacancyType</div>
-  )
-}
+  const [selectedType, setSelectedType] = useState("");
 
-export default VacancyType
+  const vacancyTypes = [
+    "ყველა ვაკანსია",
+    "ვაკანსიები",
+    "სტიპენდიები",
+    "სხვა",
+    "ტენდერები",
+    "ტრენინგები",
+  ];
+
+  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedType(event.target.value);
+  };
+
+  return (
+    <div>
+      <select
+        id="vacancyType"
+        value={selectedType}
+        onChange={handleChange}
+        className="text-[.6rem] border p-[1px] bg-background outline-none"
+      >
+        {vacancyTypes.map((type, index) => (
+          <option key={index} value={type}>
+            {type}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+};
+
+export default VacancyType;
