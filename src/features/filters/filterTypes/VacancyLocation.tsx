@@ -22,7 +22,7 @@ const VacancyLocation = () => {
         id="selectedLocation"
         value={selectedLocation}
         onChange={handleChange}
-        className="text-[.6rem] border p-[1px] bg-background outline-none"
+        className="text-[.6rem] border p-[1px] bg-background outline-none h-[20px]"
       >
         {vacancyLocations.map((type, index) => (
           <option key={index} value={type}>
