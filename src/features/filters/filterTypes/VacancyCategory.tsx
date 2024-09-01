@@ -22,7 +22,7 @@ const VacancyCategory = () => {
         id="selectedCategory"
         value={selectedCategory}
         onChange={handleChange}
-        className="text-[.6rem] border p-[1px] bg-background outline-none h-[20px]"
+        className="text-[.6rem] border p-[1px] bg-background outline-none h-[20px] rounded-sm"
       >
         {vacancyCategories.map((type, index) => (
           <option key={index} value={type}>
