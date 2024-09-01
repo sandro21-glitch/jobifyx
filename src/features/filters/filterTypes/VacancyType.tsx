@@ -22,7 +22,7 @@ const VacancyType = () => {
         id="vacancyType"
         value={selectedType}
         onChange={handleChange}
-        className="text-[.6rem] border p-[1px] bg-background outline-none"
+        className="text-[.6rem] border p-[1px] bg-background outline-none h-[20px]"
       >
         {vacancyTypes.map((type, index) => (
           <option key={index} value={type}>
