@@ -4,9 +4,7 @@ import FavoriteIcon from "./FavoriteIcon";
 
 const Navbar = () => {
   return (
-    <header
-      className="section-center bg-primary rounded-md"
-    >
+    <header className="section-center bg-primary rounded-md">
       <nav className="flex items-center justify-between">
         <div className="flex items-center">
           <FavoriteIcon />
