@@ -9,7 +9,7 @@ const Filters = () => {
       style={{ marginTop: "15px" }}
       className="section-center flex justify-end"
     >
-      <div className="flex items-center gap-5">
+      <div className="flex items-center gap-5 text-gray-500">
         <VacancyType />
         <VacancyLocation />
         <VacancyCategory />
