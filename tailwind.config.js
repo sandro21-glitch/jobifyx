@@ -4,10 +4,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#002E5D", // Navy for primary buttons and navigation
-        secondary: "#17A2B8", // Teal for secondary buttons and highlights
-        accent: "#FF6F00", // Orange for attention-grabbing elements
-        background: "#F8F9FA", // Light Gray for backgrounds
+        primary: "#0057A0", // A brighter blue for primary buttons and navigation
+        secondary: "#20C997", // A more vibrant teal for secondary buttons and highlights
+        accent: "#FF8C00", // A brighter orange for attention-grabbing elements
+        background: "#FFFFFF", // Pure white for a clean and bright background
       },
     },
   },
