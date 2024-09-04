@@ -8,11 +8,6 @@ const VipJobs = () => {
       <VipJobsHeader />
       {/* vip jobs */}
       <VipJobList />
-      <VipJobList />
-      <VipJobList />
-      <VipJobList />
-      <VipJobList />
-    
     </div>
   );
 };
