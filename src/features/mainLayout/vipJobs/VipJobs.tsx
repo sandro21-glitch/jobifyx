@@ -1,3 +1,4 @@
+import CompanyJobsList from "../companyJobs/CompanyJobsList";
 import VipJobList from "./VipJobList";
 import VipJobsHeader from "./VipJobsHeader";
 
@@ -8,6 +9,8 @@ const VipJobs = () => {
       <VipJobsHeader />
       {/* vip jobs */}
       <VipJobList />
+      {/* company jobs */}
+      <CompanyJobsList />
     </div>
   );
 };
