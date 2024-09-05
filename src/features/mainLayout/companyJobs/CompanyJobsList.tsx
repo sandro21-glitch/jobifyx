@@ -1,6 +1,5 @@
 import SingleCompanyJob from "./SingleCompanyJob";
 
-
 const tempCompanies = [
   {
     id: "1",
@@ -116,10 +115,10 @@ const tempCompanies = [
 
 const CompanyJobsList = () => {
   return (
-    <ul className="max-w-[80rem] mx-auto grid grid-cols-6 gap-5 mt-7">
-      {tempCompanies.map((company) => {
-        return <SingleCompanyJob key={company.id} company={company} />;
-      })}
+    <ul className="max-w-[70rem] mx-auto flex flex-wrap justify-center lg:justify-start items-center mt-5 gap-5">
+      {tempCompanies.map((company) => (
+        <SingleCompanyJob key={company.id} company={company} />
+      ))}
     </ul>
   );
 };
