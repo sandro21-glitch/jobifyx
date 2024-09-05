@@ -17,7 +17,7 @@ const SingleCompanyJob = ({
         className="w-[120px] h-auto"
         loading="lazy"
       />
-      <p className="text-[10px] text-center text-primary group-hover:text-gray-500">
+      <p className="text-[10px] text-center text-primary font-bold group-hover:text-gray-500">
         <Link to="/">ყველა ვაკანსია ერთ გვერდზე</Link>
       </p>
     </li>
