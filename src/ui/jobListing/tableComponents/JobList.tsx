@@ -8,6 +8,7 @@ type JobListTypes = {
     jobCompanyImage: string;
     jobPublishDate: string;
     jobDeadline: string;
+    isVip: boolean;
   }[];
 };
 const JobList = ({ jobs }: JobListTypes) => {
