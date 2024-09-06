@@ -23,7 +23,7 @@ const SingleJob = ({
     jobId,
     jobPublishDate,
     jobTitle,
-    isVip
+    isVip,
   },
 }: SingleJobTypes) => {
   console.log(jobId);
@@ -34,9 +34,13 @@ const SingleJob = ({
   py-2 px-5 hover:bg-gray-100 transition-all ease-in duration-150 border-b"
     >
       <JobLink jobTitle={jobTitle} isVip={isVip} />
-      <JobCompany companyName={jobCompanyName} companyImage={jobCompanyImage} />
-      <JobPublishDate publishDate={jobPublishDate} />
-      <JobDeadline jobDeadline={jobDeadline} />
+      <JobCompany
+        companyName={jobCompanyName}
+        companyImage={jobCompanyImage}
+        isVip={isVip}
+      />
+      <JobPublishDate publishDate={jobPublishDate} isVip={isVip} />
+      <JobDeadline jobDeadline={jobDeadline} isVip={isVip} />
     </ul>
   );
 };
