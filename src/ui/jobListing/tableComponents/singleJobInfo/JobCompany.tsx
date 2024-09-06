@@ -1,11 +1,16 @@
 type JobCompanyTypes = {
   companyName: string;
   companyImage: string;
+  isVip: boolean;
 };
 
-const JobCompany = ({ companyImage, companyName }: JobCompanyTypes) => {
+const JobCompany = ({ companyImage, companyName, isVip }: JobCompanyTypes) => {
   return (
-    <li className="col-span-2 relative">
+    <li
+      className={`${
+        isVip ? "text-primary" : "text-gray-500"
+      } font-medium col-span-2 relative`}
+    >
       {companyName}
       <img
         src={companyImage}
