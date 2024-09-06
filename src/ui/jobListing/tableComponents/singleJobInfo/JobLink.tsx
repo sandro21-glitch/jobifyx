@@ -1,8 +1,7 @@
 import { BiStar } from "react-icons/bi";
 import { FaExternalLinkAlt } from "react-icons/fa";
-import { MdOutlineFiberNew } from "react-icons/md";
 import { Link } from "react-router-dom";
-
+import { RiVipFill } from "react-icons/ri";
 type JobLinkTypes = {
   jobTitle: string;
   isVip: boolean;
@@ -13,16 +12,21 @@ const JobLink = ({ jobTitle, isVip }: JobLinkTypes) => {
       <button className="absolute -left-5 text-gray-500 text-[16px] mr-5">
         <BiStar />
       </button>
-      <Link to={"/"} className={`${isVip ? 'text-primary font-bold' : 'text-gray-500 font-medium'} `}>
+      <Link
+        to={"/"}
+        className={`${isVip ? "text-primary" : "text-gray-500"} font-medium`}
+      >
         {jobTitle}
       </Link>
       <div className="flex items-center ml-2">
-        <span className="text-[8px] text-gray-500">
+        <span className="text-[8px] text-gray-500 mr-1">
           <FaExternalLinkAlt />
         </span>
-        <span className="text-[20px] text-red-600">
-          <MdOutlineFiberNew />
-        </span>
+        {isVip && (
+          <span className="text-[17px] text-red-600">
+            <RiVipFill />
+          </span>
+        )}
       </div>
     </li>
   );
