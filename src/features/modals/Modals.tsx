@@ -1,5 +1,5 @@
 import { useAppSelector } from "../../hooks";
-import PostingAdModal from "./modalTypes/PostingAdModal";
+import PostingAdModal from "./modalTypes/postingAdContent/PostingAdModal";
 
 const Modals = () => {
   const { postingAd } = useAppSelector((store) => store.modals);
