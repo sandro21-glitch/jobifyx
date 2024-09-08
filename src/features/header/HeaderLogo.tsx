@@ -1,4 +1,4 @@
-import logo from "../../../public/logo/logo-no-background.svg";
+import logo from "/logo/logo-no-background.svg";
 
 const HeaderLogo = () => {
   return (
