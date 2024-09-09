@@ -1,9 +1,13 @@
-import Input from "../../../../../ui/Input";
-
 const AdComment = () => {
   return (
     <div>
-      <Input inputFieldType="text" placeholder="კომენტარი" />
+      <textarea
+        placeholder="კომენტარი"
+        className="px-2 py-3 w-full outline-none border 
+      text-black
+      border-gray-400 bg-gray-300 rounded-md
+      focus:border-primary focus:bg-white transition-all ease-in duration-150"
+      />
     </div>
   );
 };
