@@ -1,5 +1,6 @@
 import AdComment from "./AdComment";
 import AdName from "./AdName";
+import CompanyImage from "./CompanyImage";
 import JobDescription from "./JobDescription";
 
 const AdDetailsInputs = () => {
@@ -11,6 +12,7 @@ const AdDetailsInputs = () => {
       <AdName />
       <AdComment />
       <JobDescription />
+      <CompanyImage />
     </div>
   );
 };
