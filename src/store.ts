@@ -1,8 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import modalReducer from "./features/slices/modalsSlice";
+import modalReducer from "./slices/modalsSlice/modalsSlice";
+import jobsReducer from "./slices/jobSlice/jobsSlice";
 export const store = configureStore({
   reducer: {
     modals: modalReducer,
+    jobs: jobsReducer,
   },
 });
 
