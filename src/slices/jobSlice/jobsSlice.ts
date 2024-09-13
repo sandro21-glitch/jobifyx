@@ -9,7 +9,7 @@ interface JobsState {
 }
 
 const initialState: JobsState = {
-  jobs: null,
+  jobs: [],
   error: null,
   loading: false,
 };
