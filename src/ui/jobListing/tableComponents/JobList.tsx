@@ -13,11 +13,11 @@ type JobListTypes = {
 };
 const JobList = ({ jobs }: JobListTypes) => {
   return (
-    <ul>
+    <div>
       {jobs.map((job) => {
         return <SingleJob key={job.jobId} job={job} />;
       })}
-    </ul>
+    </div>
   );
 };
 
