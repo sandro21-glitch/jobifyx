@@ -5,6 +5,7 @@ import VipJobs from "./vipJobs/VipJobs";
 import { useAppDispatch } from "../../hooks";
 import { addJobToDatabase } from "../../slices/jobSlice/jobThunks";
 import { JobTypes } from "../../slices/jobSlice/jobTypes";
+import Filters from "../filters/Filters";
 
 const HomePage = () => {
   const job: Omit<JobTypes, "jobId"> = {
@@ -20,6 +21,9 @@ const HomePage = () => {
 
   return (
     <section className="section-center">
+      {/* page filters */}
+      <Filters />
+      {/* vip jobs */}
       <VipJobs />
       {/* company jobs */}
       <CompanyJobsList />
