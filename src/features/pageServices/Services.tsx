@@ -6,7 +6,10 @@ import SpecialCases from "./servicesContent/SpecialCases";
 
 const Services = () => {
   return (
-    <section className="section-center min-h-[65vh]">
+    <section
+      style={{ marginTop: "3rem" }}
+      className="section-center min-h-[65vh]"
+    >
       <ServicesMainHeading />
       <AdditionalInformation />
       <SpecialCases />
