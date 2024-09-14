@@ -8,7 +8,7 @@ type JobLinkTypes = {
 };
 const JobLink = ({ jobTitle, isVip }: JobLinkTypes) => {
   return (
-    <li className="col-span-3 relative flex items-center">
+    <li className="lg:col-span-3 col-span-1 relative flex items-center">
       <button className="absolute -left-5 text-gray-500 text-[16px] mr-5">
         <BiStar />
       </button>
