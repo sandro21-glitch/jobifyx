@@ -105,7 +105,7 @@ const tempVipJobList = [
 
 const VipJobs = () => {
 
-  return <JobListing  jobs={tempVipJobList} />;
+  return <JobListing jobs={tempVipJobList} />;
 };
 
 export default VipJobs;
