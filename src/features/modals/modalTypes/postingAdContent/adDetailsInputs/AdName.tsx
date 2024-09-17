@@ -1,9 +1,22 @@
 import Input from "../../../../../ui/Input";
 
-const AdName = () => {
+type AdNameTypes = {
+  jobTitle: string;
+  setJobTitle: (val: string) => void;
+};
+
+const AdName = ({ jobTitle, setJobTitle }: AdNameTypes) => {
+  const handleSetTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setJobTitle(e.target.value);
+  };
   return (
     <div>
-      <Input inputFieldType="text" placeholder="განცხადების დასახელება" />
+      <Input
+        onChange={handleSetTitle}
+        inputValue={jobTitle}
+        inputFieldType="text"
+        placeholder="განცხადების დასახელება"
+      />
     </div>
   );
 };
