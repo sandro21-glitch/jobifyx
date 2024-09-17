@@ -1,9 +1,25 @@
 import Input from "../../../../../ui/Input";
 
-const CompanyMail = () => {
+type CompanyMailTypes = {
+  jobCompanyMail: string;
+  setJobCompanyMail: (val: string) => void;
+};
+
+const CompanyMail = ({
+  jobCompanyMail,
+  setJobCompanyMail,
+}: CompanyMailTypes) => {
+  const handleSetCompanyName = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setJobCompanyMail(e.target.value);
+  };
   return (
     <div>
-      <Input inputFieldType="email" placeholder="კომპანიის ელ-ფოსტა" />
+      <Input
+        onChange={handleSetCompanyName}
+        inputValue={jobCompanyMail}
+        inputFieldType="email"
+        placeholder="კომპანიის ელ-ფოსტა"
+      />
     </div>
   );
 };
