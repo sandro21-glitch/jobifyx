@@ -1,6 +1,4 @@
-import AdDetailsInputs from "./adDetailsInputs/AdDetailsInputs";
-import AddJobBtn from "./AddJobBtn";
-import CompanyInfo from "./companyInfoInputs/CompanyInfo";
+import PostingAdForm from "./PostingAdForm";
 import logo from "/logo/logo-no-background.svg";
 
 const PostingAdModal = () => {
@@ -16,11 +14,7 @@ const PostingAdModal = () => {
           განცხადების განთავსება
         </h1>
         <hr />
-        <form>
-          <CompanyInfo />
-          <AdDetailsInputs />
-          <AddJobBtn />
-        </form>
+        <PostingAdForm />
       </div>
     </div>
   );
