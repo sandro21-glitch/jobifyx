@@ -2,7 +2,7 @@ type InputTypes = {
   inputFieldType: string;
   placeholder: string;
   inputValue?: string | number;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 const Input = ({
