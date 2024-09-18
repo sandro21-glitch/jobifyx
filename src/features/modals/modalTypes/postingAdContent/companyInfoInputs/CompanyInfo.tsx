@@ -21,6 +21,9 @@ const CompanyInfo = ({
 }: CompanyInfoTypes) => {
   return (
     <div className="flex flex-col gap-5">
+      <h4 className="text-[1.2rem] font-medium text-center">
+        კომპანიის დეტალები
+      </h4>
       <CompanyName
         jobCompanyName={jobCompanyName}
         setJobCompanyName={setJobCompanyName}
