@@ -5,6 +5,7 @@ import { JobTypes } from "../../../../slices/jobSlice/jobTypes";
 import AdDetailsInputs from "./adDetailsInputs/AdDetailsInputs";
 import AddJobBtn from "./AddJobBtn";
 import CompanyInfo from "./companyInfoInputs/CompanyInfo";
+import JobSettings from "./jobSettings/JobSettings";
 
 const PostingAdForm = () => {
   const [jobTitle, setJobTitle] = useState<string>("");
@@ -37,24 +38,38 @@ const PostingAdForm = () => {
   };
 
   return (
-    <form onSubmit={addNewJob}>
-      <CompanyInfo
-        jobCompanyName={jobCompanyName}
-        setJobCompanyName={setJobCompanyName}
-        jobCompanyMail={jobCompanyMail}
-        setJobCompanyMail={setJobCompanyMail}
-        jobCompanyNumber={jobCompanyNumber}
-        setCompanyNumber={setCompanyNumber}
-      />
-      <AdDetailsInputs
-        jobTitle={jobTitle}
-        setJobTitle={setJobTitle}
-        jobComment={jobComment}
-        setJobComment={setJobComment}
-        jobDescription={jobDescription}
-        setJobDescription={setJobDescription}
-      />
-      <AddJobBtn />
+    <form
+      onSubmit={addNewJob}
+      className="flex flex-col items-center justify-between w-full "
+    >
+      <div className="flex items-center justify-between w-full">
+        <div>
+          <CompanyInfo
+            jobCompanyName={jobCompanyName}
+            setJobCompanyName={setJobCompanyName}
+            jobCompanyMail={jobCompanyMail}
+            setJobCompanyMail={setJobCompanyMail}
+            jobCompanyNumber={jobCompanyNumber}
+            setCompanyNumber={setCompanyNumber}
+          />
+        </div>
+        <div>
+          <AdDetailsInputs
+            jobTitle={jobTitle}
+            setJobTitle={setJobTitle}
+            jobComment={jobComment}
+            setJobComment={setJobComment}
+            jobDescription={jobDescription}
+            setJobDescription={setJobDescription}
+          />
+        </div>
+        <div>
+          <JobSettings />
+        </div>
+      </div>
+      <div>
+        <AddJobBtn />
+      </div>
     </form>
   );
 };
