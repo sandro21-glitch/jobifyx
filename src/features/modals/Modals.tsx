@@ -8,7 +8,7 @@ const Modals = () => {
   return (
     <div className="fixed inset-0 overflow-scroll">
       <div
-        className={`absolute inset-0 ${
+        className={`fixed inset-0 ${
           postingAd ? "bg-white opacity-100" : "bg-black opacity-60"
         } z-[-1]`}
       ></div>
