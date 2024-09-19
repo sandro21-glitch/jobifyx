@@ -5,6 +5,8 @@ export interface JobTypes {
   jobCompanyImage: string;
   jobPublishDate: string;
   jobCompanyMail: string;
+  jobComment: string;
+  jobDescription: string;
   jobCompanyNumber: number;
   jobDeadline: string;
   isVip: boolean;
