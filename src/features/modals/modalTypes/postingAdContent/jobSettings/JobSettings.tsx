@@ -1,14 +1,29 @@
 import JobStatus from "./JobStatus";
 import JobDeadlineStatus from "./JobDeadlineStatus";
 
-const JobSettings = () => {
+type JobSettingTypes = {
+  jobDeadline: string;
+  setJobDeadline: (val: string) => void;
+  isVip: boolean;
+  setIsVip: (val: boolean) => void;
+};
+
+const JobSettings = ({
+  jobDeadline,
+  setJobDeadline,
+  isVip,
+  setIsVip,
+}: JobSettingTypes) => {
   return (
-    <div className="mt-5 flex flex-col gap-5">
-      <h4 className="text-[1.2rem] font-medium text-center">
+    <div className="flex flex-col gap-5">
+      <h4 className="text-[1.2rem] font-medium text-left lg:text-center">
         სამუშაოს პარამეტრები
       </h4>
-      <JobDeadlineStatus />
-      <JobStatus />
+      <JobDeadlineStatus
+        jobDeadline={jobDeadline}
+        setJobDeadline={setJobDeadline}
+      />
+      <JobStatus isVip={isVip} setIsVip={setIsVip} />
     </div>
   );
 };
