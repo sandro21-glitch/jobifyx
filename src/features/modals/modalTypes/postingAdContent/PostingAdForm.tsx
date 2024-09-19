@@ -15,19 +15,20 @@ const PostingAdForm = () => {
   const [jobDescription, setJobDescription] = useState<string>("");
   const [jobCompanyNumber, setCompanyNumber] = useState<number>(0);
   const [jobCompanyImage, setJobCompanyImage] = useState<string>("");
-  const [jobPublishDate, setJobPublishDate] = useState<string>("");
-  const [jobDeadline, setJobDeadline] = useState<string>("");
+  const [jobDeadline, setJobDeadline] = useState<string>("1 თვე");
   const [isVip, setIsVip] = useState<boolean>(false);
 
   const job: Omit<JobTypes, "jobId"> = {
     jobTitle,
     jobCompanyName,
     jobCompanyImage,
-    jobPublishDate,
+    jobPublishDate: new Date().toLocaleString(),
     jobDeadline,
     isVip,
     jobCompanyMail,
     jobCompanyNumber,
+    jobComment,
+    jobDescription,
   };
 
   const dispatch = useAppDispatch();
@@ -42,7 +43,7 @@ const PostingAdForm = () => {
       onSubmit={addNewJob}
       className="flex flex-col items-center justify-between w-full "
     >
-      <div className="flex items-center justify-between w-full">
+      <div className="grid lg:grid-cols-3 gap-5 w-full">
         <div>
           <CompanyInfo
             jobCompanyName={jobCompanyName}
@@ -64,7 +65,12 @@ const PostingAdForm = () => {
           />
         </div>
         <div>
-          <JobSettings />
+          <JobSettings
+            jobDeadline={jobDeadline}
+            setJobDeadline={setJobDeadline}
+            isVip={isVip}
+            setIsVip={setIsVip}
+          />
         </div>
       </div>
       <div>
