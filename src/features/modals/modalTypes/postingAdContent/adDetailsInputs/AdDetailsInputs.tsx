@@ -20,8 +20,8 @@ const AdDetailsInputs = ({
   setJobDescription,
 }: AdDetailsInputTypes) => {
   return (
-    <div className="mt-7 flex flex-col gap-5">
-      <h4 className="text-[1.2rem] font-medium text-left">
+    <div className="flex flex-col gap-5">
+      <h4 className="text-[1.2rem] font-medium text-left lg:text-center">
         განცხადების ტიპის დასახელება
       </h4>
       <AdName jobTitle={jobTitle} setJobTitle={setJobTitle} />
