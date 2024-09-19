@@ -1,10 +1,16 @@
-import { useState } from "react";
 
-const JobDeadlineStatus = () => {
-  const [duration, setDuration] = useState<string>("1 თვე"); // Default to "1 month"
 
+type JobDeadlineStatusTypes = {
+  jobDeadline: string;
+  setJobDeadline: (val: string) => void;
+};
+
+const JobDeadlineStatus = ({
+  jobDeadline,
+  setJobDeadline,
+}: JobDeadlineStatusTypes) => {
   const handleDurationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setDuration(e.target.value);
+    setJobDeadline(e.target.value);
   };
 
   return (
@@ -17,7 +23,7 @@ const JobDeadlineStatus = () => {
       </label>
       <select
         id="job-duration"
-        value={duration}
+        value={jobDeadline}
         onChange={handleDurationChange}
         className="block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring outline-none focus:ring-primary focus:border-primary"
       >
@@ -31,7 +37,7 @@ const JobDeadlineStatus = () => {
 
       <div className="mt-4">
         <p>
-          არჩეული ხანგრძლივობა: <strong>{duration}</strong>
+          არჩეული ხანგრძლივობა: <strong>{jobDeadline}</strong>
         </p>
       </div>
     </div>
