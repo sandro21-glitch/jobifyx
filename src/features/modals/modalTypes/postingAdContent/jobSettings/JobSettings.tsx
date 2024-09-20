@@ -1,5 +1,6 @@
 import JobStatus from "./JobStatus";
 import JobDeadlineStatus from "./JobDeadlineStatus";
+import JobType from "./JobType";
 
 type JobSettingTypes = {
   jobDeadline: string;
@@ -24,6 +25,7 @@ const JobSettings = ({
         setJobDeadline={setJobDeadline}
       />
       <JobStatus isVip={isVip} setIsVip={setIsVip} />
+      <JobType />
     </div>
   );
 };
