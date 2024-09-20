@@ -25,7 +25,7 @@ const JobDeadlineStatus = ({
         id="job-duration"
         value={jobDeadline}
         onChange={handleDurationChange}
-        className="block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring outline-none focus:ring-primary focus:border-primary"
+        className="block w-full text-xs px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring outline-none focus:ring-primary focus:border-primary"
       >
         <option value="1 კვირა">1 კვირა</option>
         <option value="2 კვირა">2 კვირა</option>
