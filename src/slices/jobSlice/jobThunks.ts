@@ -23,7 +23,6 @@ export const addJobToDatabase = createAsyncThunk<
     const newJob: JobTypes = {
       ...job,
       jobId: newJobId,
-      jobCompanyImage: "",
     };
 
     await set(ref(database, `jobs/${newJobId}`), newJob);
