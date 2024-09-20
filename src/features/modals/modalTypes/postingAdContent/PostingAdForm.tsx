@@ -35,7 +35,12 @@ const PostingAdForm = () => {
 
   const addNewJob = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    dispatch(addJobToDatabase({ job }));
+
+    if (jobCompanyImage !== "") {
+      dispatch(addJobToDatabase({ job }));
+    } else {
+      console.error("Job image URL is empty.");
+    }
   };
 
   return (
@@ -62,6 +67,7 @@ const PostingAdForm = () => {
             setJobComment={setJobComment}
             jobDescription={jobDescription}
             setJobDescription={setJobDescription}
+            setJobCompanyImage={setJobCompanyImage}
           />
         </div>
         <div>
