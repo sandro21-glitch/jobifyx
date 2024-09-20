@@ -12,11 +12,12 @@ const CompanyNumber = ({
   const handleSetCompanyNumber = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCompanyNumber(Number(e.target.value));
   };
+
   return (
     <div>
       <Input
-        inputFieldType="number"
-        inputValue={jobCompanyNumber}
+        inputFieldType="text"
+        inputValue={jobCompanyNumber === 0 ? "" : String(jobCompanyNumber)}
         onChange={handleSetCompanyNumber}
         placeholder="ტელეფონი"
       />
