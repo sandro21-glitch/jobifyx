@@ -10,4 +10,5 @@ export interface JobTypes {
   jobCompanyNumber: number;
   jobDeadline: string;
   isVip: boolean;
+  jobCategory: string;
 }
