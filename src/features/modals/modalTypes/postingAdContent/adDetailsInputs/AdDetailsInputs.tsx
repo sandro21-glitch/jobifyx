@@ -19,8 +19,9 @@ const AdDetailsInputs = ({
   setJobComment,
   jobDescription,
   setJobDescription,
-  setJobCompanyImage
+  setJobCompanyImage,
 }: AdDetailsInputTypes) => {
+
   return (
     <div className="flex flex-col gap-5">
       <h4 className="text-[1.2rem] font-medium text-left lg:text-center">
@@ -32,7 +33,9 @@ const AdDetailsInputs = ({
         jobDescription={jobDescription}
         setJobDescription={setJobDescription}
       />
-      <CompanyImage setJobCompanyImage={setJobCompanyImage} />
+      <CompanyImage
+        setJobCompanyImage={setJobCompanyImage}
+      />
     </div>
   );
 };
