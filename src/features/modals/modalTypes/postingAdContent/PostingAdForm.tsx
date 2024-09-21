@@ -18,6 +18,7 @@ const PostingAdForm = () => {
   const [jobDeadline, setJobDeadline] = useState<string>("1 თვე");
   const [isVip, setIsVip] = useState<boolean>(false);
 
+
   const job: Omit<JobTypes, "jobId"> = {
     jobTitle,
     jobCompanyName,
@@ -29,6 +30,7 @@ const PostingAdForm = () => {
     jobCompanyNumber,
     jobComment,
     jobDescription,
+    jobCategory: "TEST",
   };
 
   const dispatch = useAppDispatch();
