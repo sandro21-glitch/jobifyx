@@ -5,7 +5,7 @@ interface ModalState {
 }
 
 const initialState: ModalState = {
-  postingAd: true,
+  postingAd: false,
 };
 
 export const modalsSlice = createSlice({
