@@ -9,12 +9,18 @@ import ProgressBar from "../../../../../ui/ProgressBar";
 
 type CompanyImageProps = {
   setJobCompanyImage: (val: string) => void;
+  setUploading: (val: boolean) => void;
+  uploading: boolean;
 };
 
-const CompanyImage = ({ setJobCompanyImage }: CompanyImageProps) => {
+const CompanyImage = ({
+  setJobCompanyImage,
+  setUploading,
+  uploading,
+}: CompanyImageProps) => {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
-  const [uploading, setUploading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [localImage, setLocalImage] = useState<string>("");
 
   const [progress, setProgress] = useState<number>(0);
 
@@ -60,6 +66,7 @@ const CompanyImage = ({ setJobCompanyImage }: CompanyImageProps) => {
             const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
             // console.log("File available at", downloadURL);
             setJobCompanyImage(downloadURL);
+            setLocalImage(downloadURL);
             setUploading(false);
           } catch (err) {
             console.error("Error getting download URL:", err);
@@ -86,13 +93,24 @@ const CompanyImage = ({ setJobCompanyImage }: CompanyImageProps) => {
           onChange={handleFileChange}
           className="hidden"
         />
-        <button
-          type="button"
-          onClick={handleFileClick}
-          className="p-1 border-gray-500 w-full hover:bg-gray-400 border rounded-md mt-1 text-black"
-        >
-          + ფაილის არჩევა
-        </button>
+        {localImage === "" ? (
+          <button
+            type="button"
+            onClick={handleFileClick}
+            className="p-1 border-gray-500 w-full hover:bg-gray-400 border rounded-md mt-1 text-black"
+          >
+            + ფაილის არჩევა
+          </button>
+        ) : (
+          <div>
+            <img
+              src={localImage}
+              loading="lazy"
+              alt="logo"
+              className="w-16 h-16"
+            />
+          </div>
+        )}
       </label>
       {uploading && <p className="text-center">იტვირთება...</p>}
       {error && <p className="text-red-500">{error}</p>}
