@@ -11,6 +11,8 @@ type AdDetailsInputTypes = {
   jobDescription: string;
   setJobDescription: (val: string) => void;
   setJobCompanyImage: (val: string) => void;
+  setUploading: (val: boolean) => void;
+  uploading: boolean;
 };
 const AdDetailsInputs = ({
   jobTitle,
@@ -20,8 +22,9 @@ const AdDetailsInputs = ({
   jobDescription,
   setJobDescription,
   setJobCompanyImage,
+  setUploading,
+  uploading,
 }: AdDetailsInputTypes) => {
-
   return (
     <div className="flex flex-col gap-5">
       <h4 className="text-[1.2rem] font-medium text-left lg:text-center">
@@ -35,6 +38,8 @@ const AdDetailsInputs = ({
       />
       <CompanyImage
         setJobCompanyImage={setJobCompanyImage}
+        uploading={uploading}
+        setUploading={setUploading}
       />
     </div>
   );
