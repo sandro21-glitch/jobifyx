@@ -1,4 +1,4 @@
-import Modals from "../modals/Modals";
+
 import CompanyJobsList from "./companyJobs/CompanyJobsList";
 import StandardJobListings from "./standardJobsListing/StandardJobListings";
 import VipJobs from "./vipJobs/VipJobs";
@@ -15,8 +15,6 @@ const HomePage = () => {
       <CompanyJobsList />
       {/* standard jobs */}
       <StandardJobListings />
-      {/* modals */}
-      <Modals />
     </section>
   );
 };
