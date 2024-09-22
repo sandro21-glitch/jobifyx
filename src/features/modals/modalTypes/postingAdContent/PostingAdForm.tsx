@@ -18,6 +18,7 @@ const PostingAdForm = () => {
   const [jobDeadline, setJobDeadline] = useState<string>("1 თვე");
   const [isVip, setIsVip] = useState<boolean>(false);
 
+  const [uploading, setUploading] = useState(false);
 
   const job: Omit<JobTypes, "jobId"> = {
     jobTitle,
@@ -70,6 +71,8 @@ const PostingAdForm = () => {
             jobDescription={jobDescription}
             setJobDescription={setJobDescription}
             setJobCompanyImage={setJobCompanyImage}
+            uploading={uploading}
+            setUploading={setUploading}
           />
         </div>
         <div>
@@ -82,7 +85,7 @@ const PostingAdForm = () => {
         </div>
       </div>
       <div>
-        <AddJobBtn />
+        <AddJobBtn uploading={uploading} />
       </div>
     </form>
   );
