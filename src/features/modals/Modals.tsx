@@ -6,7 +6,7 @@ const Modals = () => {
   const isAnyModalOpen = postingAd;
   if (!isAnyModalOpen) return null;
   return (
-    <div className="fixed inset-0 overflow-scroll">
+    <div className="fixed inset-0 overflow-scroll z-[999999999]">
       <div
         className={`fixed inset-0 ${
           postingAd ? "bg-white opacity-100" : "bg-black opacity-60"
