@@ -17,6 +17,7 @@ const PostingAdForm = () => {
   const [jobCompanyImage, setJobCompanyImage] = useState<string>("");
   const [jobDeadline, setJobDeadline] = useState<string>("1 თვე");
   const [isVip, setIsVip] = useState<boolean>(false);
+  const [jobCategoryType, setJobCategoryType] = useState<string>("");
 
   const [uploading, setUploading] = useState(false);
 
@@ -31,7 +32,7 @@ const PostingAdForm = () => {
     jobCompanyNumber,
     jobComment,
     jobDescription,
-    jobCategory: "TEST",
+    jobCategory: jobCategoryType,
   };
 
   const dispatch = useAppDispatch();
@@ -81,6 +82,8 @@ const PostingAdForm = () => {
             setJobDeadline={setJobDeadline}
             isVip={isVip}
             setIsVip={setIsVip}
+            jobCategoryType={jobCategoryType}
+            setJobCategoryType={setJobCategoryType}
           />
         </div>
       </div>
