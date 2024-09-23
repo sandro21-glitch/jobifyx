@@ -1,9 +1,11 @@
-import { useState } from "react";
 import { jobTypes } from "../../../../../constants/JobTypesList";
 
-const JobType = () => {
-  const [jobCategoryType, setJobCategoryType] = useState<string>("");
+type JobCategoryTypes = {
+  jobCategoryType: string;
+  setJobCategoryType: (val: string) => void;
+};
 
+const JobType = ({ jobCategoryType, setJobCategoryType }: JobCategoryTypes) => {
   const handleChangeCategory = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setJobCategoryType(e.target.value);
   };
