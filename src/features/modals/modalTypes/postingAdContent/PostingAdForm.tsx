@@ -40,11 +40,7 @@ const PostingAdForm = () => {
   const addNewJob = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (jobCompanyImage !== "") {
-      dispatch(addJobToDatabase({ job }));
-    } else {
-      console.error("Job image URL is empty.");
-    }
+    dispatch(addJobToDatabase({ job }));
   };
 
   return (
