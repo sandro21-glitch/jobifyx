@@ -1,17 +1,30 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { JobTypes } from "./jobTypes";
-import { addJobToDatabase } from "./jobThunks";
+import { addJobToDatabase, fetchVipJobs } from "./jobThunks";
+import { jobTypes } from "../../constants/JobTypesList";
 
 interface JobsState {
-  jobs: JobTypes[] | null;
-  error: string | null;
-  loading: boolean;
+  vipJobs: {
+    data: JobTypes[] | null;
+    loading: boolean;
+    error: string | null;
+  };
+  addJob: {
+    loading: boolean;
+    error: string | null;
+  };
 }
 
 const initialState: JobsState = {
-  jobs: [],
-  error: null,
-  loading: false,
+  vipJobs: {
+    data: [],
+    loading: false,
+    error: null,
+  },
+  addJob: {
+    error: null,
+    loading: false,
+  },
 };
 
 export const jobSlice = createSlice({
@@ -21,16 +34,30 @@ export const jobSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(addJobToDatabase.pending, (state) => {
-        state.loading = true;
-        state.error = null;
+        state.addJob.loading = true;
+        state.addJob.error = null;
       })
-      .addCase(addJobToDatabase.fulfilled, (state, action) => {
-        state.loading = false;
-        state.jobs?.push(action.payload.job);
+      .addCase(addJobToDatabase.fulfilled, (state) => {
+        state.addJob.loading = false;
       })
       .addCase(addJobToDatabase.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload as string;
+        state.addJob.loading = false;
+        state.addJob.error = action.payload as string;
+      });
+    builder
+      .addCase(fetchVipJobs.pending, (state) => {
+        state.vipJobs.loading = true;
+      })
+      .addCase(
+        fetchVipJobs.fulfilled,
+        (state, action: PayloadAction<JobTypes[]>) => {
+          state.vipJobs.loading = false;
+          state.vipJobs.data = action.payload;
+        }
+      )
+      .addCase(fetchVipJobs.rejected, (state, action) => {
+        state.vipJobs.loading = false;
+        state.vipJobs.error = (action.payload as string) || "rejected";
       });
   },
 });
