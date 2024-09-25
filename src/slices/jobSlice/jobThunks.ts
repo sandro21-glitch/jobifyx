@@ -1,6 +1,6 @@
 // Async thunk for adding a new job
 
-import { ref, set } from "firebase/database";
+import { equalTo, get, orderByChild, query, ref, set } from "firebase/database";
 import { JobTypes } from "./jobTypes";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { database } from "../../config/firebase";
@@ -32,5 +32,69 @@ export const addJobToDatabase = createAsyncThunk<
   } catch (error: any) {
     console.error("Error adding job:", error.message);
     return rejectWithValue(error.message || "Error adding job to the database");
+  }
+});
+
+// Fetch VIP jobs
+export const fetchVipJobs = createAsyncThunk<
+  JobTypes[],
+  void,
+  { rejectValue: string }
+>("jobs/fetchVipJobs", async (_, { rejectWithValue }) => {
+  try {
+    const vipJobsRef = query(
+      ref(database, "jobs"),
+      orderByChild("isVip"),
+      equalTo(true)
+    );
+
+    const snapshot = await get(vipJobsRef);
+
+    if (!snapshot.exists()) {
+      return [];
+    }
+
+    const jobs: JobTypes[] = [];
+    snapshot.forEach((childSnapshot) => {
+      const job = childSnapshot.val();
+      jobs.push(job);
+    });
+
+    return jobs;
+  } catch (error: any) {
+    console.error("Error fetching VIP jobs:", error.message);
+    return rejectWithValue(error.message || "Error fetching VIP jobs");
+  }
+});
+
+// Fetch Non-VIP jobs
+export const fetchNonVipJobs = createAsyncThunk<
+  JobTypes[],
+  void,
+  { rejectValue: string }
+>("jobs/fetchNonVipJobs", async (_, { rejectWithValue }) => {
+  try {
+    const nonVipJobsRef = query(
+      ref(database, "jobs"),
+      orderByChild("vipStatus"),
+      equalTo(false)
+    );
+
+    const snapshot = await get(nonVipJobsRef);
+
+    if (!snapshot.exists()) {
+      return [];
+    }
+
+    const jobs: JobTypes[] = [];
+    snapshot.forEach((childSnapshot) => {
+      const job = childSnapshot.val();
+      jobs.push(job);
+    });
+
+    return jobs;
+  } catch (error: any) {
+    console.error("Error fetching non-VIP jobs:", error.message);
+    return rejectWithValue(error.message || "Error fetching non-VIP jobs");
   }
 });
