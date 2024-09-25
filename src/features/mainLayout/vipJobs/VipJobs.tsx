@@ -1,111 +1,23 @@
+import { useEffect } from "react";
 import JobListing from "../../../ui/jobListing/JobListing";
-
-const tempVipJobList = [
-  {
-    jobId: "1",
-    jobTitle: "უფროსი შიდა აუდიტორი",
-    jobCompanyName: "არდი დაზღვევა",
-    jobCompanyImage:
-      "https://jobs.ge/data/clients/logo_icon/6612_logo_for_jobsge_1333557.gif",
-    jobPublishDate: "03 სექტემბერი",
-    jobDeadline: "03 ოქტომბერი",
-    isVip: true,
-  },
-  {
-    jobId: "1",
-    jobTitle: "უფროსი შიდა აუდიტორი",
-    jobCompanyName: "არდი დაზღვევა",
-    jobCompanyImage:
-      "https://jobs.ge/data/clients/logo_icon/6612_logo_for_jobsge_1333557.gif",
-    jobPublishDate: "03 სექტემბერი",
-    jobDeadline: "03 ოქტომბერი",
-    isVip: true,
-  },
-  {
-    jobId: "1",
-    jobTitle: "უფროსი შიდა აუდიტორი",
-    jobCompanyName: "არდი დაზღვევა",
-    jobCompanyImage:
-      "https://jobs.ge/data/clients/logo_icon/6612_logo_for_jobsge_1333557.gif",
-    jobPublishDate: "03 სექტემბერი",
-    jobDeadline: "03 ოქტომბერი",
-    isVip: true,
-  },
-  {
-    jobId: "1",
-    jobTitle: "უფროსი შიდა აუდიტორი",
-    jobCompanyName: "არდი დაზღვევა",
-    jobCompanyImage:
-      "https://jobs.ge/data/clients/logo_icon/6612_logo_for_jobsge_1333557.gif",
-    jobPublishDate: "03 სექტემბერი",
-    jobDeadline: "03 ოქტომბერი",
-    isVip: true,
-  },
-  {
-    jobId: "1",
-    jobTitle: "უფროსი შიდა აუდიტორი",
-    jobCompanyName: "არდი დაზღვევა",
-    jobCompanyImage:
-      "https://jobs.ge/data/clients/logo_icon/6612_logo_for_jobsge_1333557.gif",
-    jobPublishDate: "03 სექტემბერი",
-    jobDeadline: "03 ოქტომბერი",
-    isVip: true,
-  },
-  {
-    jobId: "1",
-    jobTitle: "უფროსი შიდა აუდიტორი",
-    jobCompanyName: "არდი დაზღვევა",
-    jobCompanyImage:
-      "https://jobs.ge/data/clients/logo_icon/6612_logo_for_jobsge_1333557.gif",
-    jobPublishDate: "03 სექტემბერი",
-    jobDeadline: "03 ოქტომბერი",
-    isVip: true,
-  },
-  {
-    jobId: "1",
-    jobTitle: "უფროსი შიდა აუდიტორი",
-    jobCompanyName: "არდი დაზღვევა",
-    jobCompanyImage:
-      "https://jobs.ge/data/clients/logo_icon/6612_logo_for_jobsge_1333557.gif",
-    jobPublishDate: "03 სექტემბერი",
-    jobDeadline: "03 ოქტომბერი",
-    isVip: true,
-  },
-  {
-    jobId: "1",
-    jobTitle: "უფროსი შიდა აუდიტორი",
-    jobCompanyName: "არდი დაზღვევა",
-    jobCompanyImage:
-      "https://jobs.ge/data/clients/logo_icon/6612_logo_for_jobsge_1333557.gif",
-    jobPublishDate: "03 სექტემბერი",
-    jobDeadline: "03 ოქტომბერი",
-    isVip: true,
-  },
-  {
-    jobId: "1",
-    jobTitle: "უფროსი შიდა აუდიტორი",
-    jobCompanyName: "არდი დაზღვევა",
-    jobCompanyImage:
-      "https://jobs.ge/data/clients/logo_icon/6612_logo_for_jobsge_1333557.gif",
-    jobPublishDate: "03 სექტემბერი",
-    jobDeadline: "03 ოქტომბერი",
-    isVip: true,
-  },
-  {
-    jobId: "1",
-    jobTitle: "უფროსი შიდა აუდიტორი",
-    jobCompanyName: "არდი დაზღვევა",
-    jobCompanyImage:
-      "https://jobs.ge/data/clients/logo_icon/6612_logo_for_jobsge_1333557.gif",
-    jobPublishDate: "03 სექტემბერი",
-    jobDeadline: "03 ოქტომბერი",
-    isVip: true,
-  },
-];
+import { useAppDispatch, useAppSelector } from "../../../hooks";
+import { fetchVipJobs } from "../../../slices/jobSlice/jobThunks";
 
 const VipJobs = () => {
+  const dispatch = useAppDispatch();
 
-  return <JobListing jobs={tempVipJobList} />;
+  const { data, error, loading } = useAppSelector(
+    (store) => store.jobs.vipJobs
+  );
+
+  useEffect(() => {
+    dispatch(fetchVipJobs());
+  }, [dispatch]);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>error</p>;
+
+  return <JobListing jobs={data ? data : []} />;
 };
 
 export default VipJobs;
