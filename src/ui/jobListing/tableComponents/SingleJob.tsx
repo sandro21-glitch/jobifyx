@@ -40,7 +40,7 @@ const SingleJob = ({
         isVip={isVip}
       />
       <JobPublishDate publishDate={jobPublishDate} isVip={isVip} />
-      <JobDeadline jobDeadline={jobDeadline} isVip={isVip} />
+      <JobDeadline jobDeadline={jobDeadline} isVip={isVip} jobPublishDate={jobPublishDate} />
     </ul>
   );
 };
