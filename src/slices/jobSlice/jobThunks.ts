@@ -76,7 +76,7 @@ export const fetchNonVipJobs = createAsyncThunk<
   try {
     const nonVipJobsRef = query(
       ref(database, "jobs"),
-      orderByChild("vipStatus"),
+      orderByChild("isVip"),
       equalTo(false)
     );
 
