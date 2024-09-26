@@ -1,10 +1,14 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { JobTypes } from "./jobTypes";
-import { addJobToDatabase, fetchVipJobs } from "./jobThunks";
-import { jobTypes } from "../../constants/JobTypesList";
+import { addJobToDatabase, fetchNonVipJobs, fetchVipJobs } from "./jobThunks";
 
 interface JobsState {
   vipJobs: {
+    data: JobTypes[] | null;
+    loading: boolean;
+    error: string | null;
+  };
+  standardJobs: {
     data: JobTypes[] | null;
     loading: boolean;
     error: string | null;
@@ -17,6 +21,11 @@ interface JobsState {
 
 const initialState: JobsState = {
   vipJobs: {
+    data: [],
+    loading: false,
+    error: null,
+  },
+  standardJobs: {
     data: [],
     loading: false,
     error: null,
@@ -58,6 +67,21 @@ export const jobSlice = createSlice({
       .addCase(fetchVipJobs.rejected, (state, action) => {
         state.vipJobs.loading = false;
         state.vipJobs.error = (action.payload as string) || "rejected";
+      });
+    builder
+      .addCase(fetchNonVipJobs.pending, (state) => {
+        state.standardJobs.loading = true;
+      })
+      .addCase(
+        fetchNonVipJobs.fulfilled,
+        (state, action: PayloadAction<JobTypes[]>) => {
+          state.standardJobs.loading = false;
+          state.standardJobs.data = action.payload;
+        }
+      )
+      .addCase(fetchNonVipJobs.rejected, (state, action) => {
+        state.standardJobs.loading = false;
+        state.standardJobs.error = (action.payload as string) || "rejected";
       });
   },
 });
