@@ -6,6 +6,7 @@ import AdDetailsInputs from "./adDetailsInputs/AdDetailsInputs";
 import AddJobBtn from "./AddJobBtn";
 import CompanyInfo from "./companyInfoInputs/CompanyInfo";
 import JobSettings from "./jobSettings/JobSettings";
+import MarkdownPreview from "./markdownPrev/MarkdownPreview";
 
 const PostingAdForm = () => {
   const [jobTitle, setJobTitle] = useState<string>("");
@@ -39,7 +40,6 @@ const PostingAdForm = () => {
 
   const addNewJob = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     dispatch(addJobToDatabase({ job }));
   };
 
@@ -86,6 +86,15 @@ const PostingAdForm = () => {
       <div>
         <AddJobBtn uploading={uploading} />
       </div>
+      {/* Markdown Preview */}
+      <MarkdownPreview
+        jobDescription={jobDescription}
+        jobComment={jobComment}
+        jobTitle={jobTitle}
+        jobCompanyName={jobCompanyName}
+        jobPublishDate={new Date().toLocaleString()}
+        jobDeadline={jobDeadline}
+      />
     </form>
   );
 };
