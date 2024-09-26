@@ -1,4 +1,4 @@
-import { georgianMonths } from "../../../../constants/geoMonthNames";
+import { georgianMonths } from "../../../../utils/geoMonthNames";
 
 type JobPublishDateTypes = {
   publishDate: string;
