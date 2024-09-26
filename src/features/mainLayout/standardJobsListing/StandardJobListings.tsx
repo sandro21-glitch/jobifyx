@@ -1,90 +1,23 @@
+import { useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "../../../hooks";
 import JobListing from "../../../ui/jobListing/JobListing";
-
-const tempStandardJobList = [
-  {
-    jobId: "1",
-    jobTitle: "უფროსი შიდა აუდიტორი",
-    jobCompanyName: "არდი დაზღვევა",
-    jobCompanyImage:
-      "https://jobs.ge/data/clients/logo_icon/6612_logo_for_jobsge_1333557.gif",
-    jobPublishDate: "03 სექტემბერი",
-    jobDeadline: "03 ოქტომბერი",
-    isVip: false,
-  },
-  {
-    jobId: "1",
-    jobTitle: "უფროსი შიდა აუდიტორი",
-    jobCompanyName: "არდი დაზღვევა",
-    jobCompanyImage:
-      "https://jobs.ge/data/clients/logo_icon/6612_logo_for_jobsge_1333557.gif",
-    jobPublishDate: "03 სექტემბერი",
-    jobDeadline: "03 ოქტომბერი",
-    isVip: false,
-  },
-  {
-    jobId: "1",
-    jobTitle: "უფროსი შიდა აუდიტორი",
-    jobCompanyName: "არდი დაზღვევა",
-    jobCompanyImage:
-      "https://jobs.ge/data/clients/logo_icon/6612_logo_for_jobsge_1333557.gif",
-    jobPublishDate: "03 სექტემბერი",
-    jobDeadline: "03 ოქტომბერი",
-    isVip: false,
-  },
-  {
-    jobId: "1",
-    jobTitle: "უფროსი შიდა აუდიტორი",
-    jobCompanyName: "არდი დაზღვევა",
-    jobCompanyImage:
-      "https://jobs.ge/data/clients/logo_icon/6612_logo_for_jobsge_1333557.gif",
-    jobPublishDate: "03 სექტემბერი",
-    jobDeadline: "03 ოქტომბერი",
-    isVip: false,
-  },
-  {
-    jobId: "1",
-    jobTitle: "უფროსი შიდა აუდიტორი",
-    jobCompanyName: "არდი დაზღვევა",
-    jobCompanyImage:
-      "https://jobs.ge/data/clients/logo_icon/6612_logo_for_jobsge_1333557.gif",
-    jobPublishDate: "03 სექტემბერი",
-    jobDeadline: "03 ოქტომბერი",
-    isVip: false,
-  },
-  {
-    jobId: "1",
-    jobTitle: "უფროსი შიდა აუდიტორი",
-    jobCompanyName: "არდი დაზღვევა",
-    jobCompanyImage:
-      "https://jobs.ge/data/clients/logo_icon/6612_logo_for_jobsge_1333557.gif",
-    jobPublishDate: "03 სექტემბერი",
-    jobDeadline: "03 ოქტომბერი",
-    isVip: false,
-  },
-  {
-    jobId: "1",
-    jobTitle: "უფროსი შიდა აუდიტორი",
-    jobCompanyName: "არდი დაზღვევა",
-    jobCompanyImage:
-      "https://jobs.ge/data/clients/logo_icon/6612_logo_for_jobsge_1333557.gif",
-    jobPublishDate: "03 სექტემბერი",
-    jobDeadline: "03 ოქტომბერი",
-    isVip: false,
-  },
-  {
-    jobId: "1",
-    jobTitle: "უფროსი შიდა აუდიტორი",
-    jobCompanyName: "არდი დაზღვევა",
-    jobCompanyImage:
-      "https://jobs.ge/data/clients/logo_icon/6612_logo_for_jobsge_1333557.gif",
-    jobPublishDate: "03 სექტემბერი",
-    jobDeadline: "03 ოქტომბერი",
-    isVip: false,
-  },
-];
+import { fetchNonVipJobs } from "../../../slices/jobSlice/jobThunks";
 
 const StandardJobListings = () => {
-  return <JobListing jobs={tempStandardJobList} />;
+  const { data, error, loading } = useAppSelector(
+    (store) => store.jobs.standardJobs
+  );
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(fetchNonVipJobs());
+  }, [dispatch]);
+
+  if (loading) return <p>loading...</p>;
+  if (error) return <p>error</p>;
+
+  return <JobListing jobs={data ? data : []} />;
 };
 
 export default StandardJobListings;
