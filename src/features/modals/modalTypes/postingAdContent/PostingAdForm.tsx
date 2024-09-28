@@ -1,14 +1,12 @@
 import { useState } from "react";
+import { nanoid } from "nanoid";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useAppDispatch } from "../../../../hooks";
 import { addJobToDatabase } from "../../../../slices/jobSlice/jobThunks";
 import { JobTypes } from "../../../../slices/jobSlice/jobTypes";
-import AdDetailsInputs from "./adDetailsInputs/AdDetailsInputs";
 import AddJobBtn from "./AddJobBtn";
-import CompanyInfo from "./companyInfoInputs/CompanyInfo";
-import JobSettings from "./jobSettings/JobSettings";
 import MarkdownPreview from "./markdownPrev/MarkdownPreview";
-import { nanoid } from "nanoid";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import JobFormLayout from "./JobFormLayout";
 
 const PostingAdForm = () => {
   const [jobTitle, setJobTitle] = useState<string>("");
@@ -61,41 +59,29 @@ const PostingAdForm = () => {
       onSubmit={addNewJob}
       className="flex flex-col items-center justify-between w-full "
     >
-      <div className="grid lg:grid-cols-3 gap-5 w-full">
-        <div>
-          <CompanyInfo
-            jobCompanyName={jobCompanyName}
-            setJobCompanyName={setJobCompanyName}
-            jobCompanyMail={jobCompanyMail}
-            setJobCompanyMail={setJobCompanyMail}
-            jobCompanyNumber={jobCompanyNumber}
-            setCompanyNumber={setCompanyNumber}
-          />
-        </div>
-        <div>
-          <AdDetailsInputs
-            jobTitle={jobTitle}
-            setJobTitle={setJobTitle}
-            jobComment={jobComment}
-            setJobComment={setJobComment}
-            jobDescription={jobDescription}
-            setJobDescription={setJobDescription}
-            setJobCompanyImage={setJobCompanyImage}
-            uploading={uploading}
-            setUploading={setUploading}
-          />
-        </div>
-        <div>
-          <JobSettings
-            jobDeadline={jobDeadline}
-            setJobDeadline={setJobDeadline}
-            isVip={isVip}
-            setIsVip={setIsVip}
-            jobCategoryType={jobCategoryType}
-            setJobCategoryType={setJobCategoryType}
-          />
-        </div>
-      </div>
+      <JobFormLayout
+        jobCompanyName={jobCompanyName}
+        setJobCompanyName={setJobCompanyName}
+        jobCompanyMail={jobCompanyMail}
+        setJobCompanyMail={setJobCompanyMail}
+        jobCompanyNumber={jobCompanyNumber}
+        setCompanyNumber={setCompanyNumber}
+        jobTitle={jobTitle}
+        setJobTitle={setJobTitle}
+        jobComment={jobComment}
+        setJobComment={setJobComment}
+        jobDescription={jobDescription}
+        setJobDescription={setJobDescription}
+        setJobCompanyImage={setJobCompanyImage}
+        uploading={uploading}
+        setUploading={setUploading}
+        jobDeadline={jobDeadline}
+        setJobDeadline={setJobDeadline}
+        isVip={isVip}
+        setIsVip={setIsVip}
+        jobCategoryType={jobCategoryType}
+        setJobCategoryType={setJobCategoryType}
+      />
       <div>
         <AddJobBtn uploading={uploading} />
       </div>
