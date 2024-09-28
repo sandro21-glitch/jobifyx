@@ -26,21 +26,27 @@ const SingleJob = ({
     isVip,
   },
 }: SingleJobTypes) => {
-  console.log(jobId);
-
   return (
     <ul
       className="grid grid-cols-2 lg:grid-cols-7 text-[12px] font-semibold text-primary
   py-2 px-5 hover:bg-gray-100 transition-all ease-in duration-150 border-b"
     >
-      <JobLink jobTitle={jobTitle} isVip={isVip} />
+      <JobLink
+        jobTitle={jobTitle}
+        isVip={isVip}
+        jobPublishDate={jobPublishDate}
+      />
       <JobCompany
         companyName={jobCompanyName}
         companyImage={jobCompanyImage}
         isVip={isVip}
       />
       <JobPublishDate publishDate={jobPublishDate} isVip={isVip} />
-      <JobDeadline jobDeadline={jobDeadline} isVip={isVip} jobPublishDate={jobPublishDate} />
+      <JobDeadline
+        jobDeadline={jobDeadline}
+        isVip={isVip}
+        jobPublishDate={jobPublishDate}
+      />
     </ul>
   );
 };
