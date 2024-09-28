@@ -7,6 +7,8 @@ import AddJobBtn from "./AddJobBtn";
 import CompanyInfo from "./companyInfoInputs/CompanyInfo";
 import JobSettings from "./jobSettings/JobSettings";
 import MarkdownPreview from "./markdownPrev/MarkdownPreview";
+import { nanoid } from "nanoid";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 const PostingAdForm = () => {
   const [jobTitle, setJobTitle] = useState<string>("");
@@ -22,7 +24,8 @@ const PostingAdForm = () => {
 
   const [uploading, setUploading] = useState(false);
 
-  const job: Omit<JobTypes, "jobId"> = {
+  const job: JobTypes = {
+    jobId: nanoid(),
     jobTitle,
     jobCompanyName,
     jobCompanyImage,
@@ -37,10 +40,20 @@ const PostingAdForm = () => {
   };
 
   const dispatch = useAppDispatch();
+  const queryClient = useQueryClient();
+
+  const mutation = useMutation({
+    mutationFn: () => dispatch(addJobToDatabase(job)),
+    onSuccess: () => {
+      // refetch VIP and standard jobs after a successful mutation
+      queryClient.invalidateQueries({ queryKey: ["vipJobs"] });
+      queryClient.invalidateQueries({ queryKey: ["standardJobs"] });
+    },
+  });
 
   const addNewJob = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    dispatch(addJobToDatabase({ job }));
+    mutation.mutate();
   };
 
   return (
