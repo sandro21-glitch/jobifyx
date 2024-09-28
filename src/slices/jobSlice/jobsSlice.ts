@@ -13,6 +13,7 @@ interface JobsState {
     loading: boolean;
     error: string | null;
   };
+  allJob: JobTypes[] | null;
   addJob: {
     loading: boolean;
     error: string | null;
@@ -30,6 +31,7 @@ const initialState: JobsState = {
     loading: false,
     error: null,
   },
+  allJob: [],
   addJob: {
     error: null,
     loading: false,
@@ -62,6 +64,11 @@ export const jobSlice = createSlice({
         (state, action: PayloadAction<JobTypes[]>) => {
           state.vipJobs.loading = false;
           state.vipJobs.data = action.payload;
+          if (Array.isArray(state.allJob)) {
+            state.allJob.push(...action.payload);
+          } else {
+            state.allJob = [...action.payload];
+          }
         }
       )
       .addCase(fetchVipJobs.rejected, (state, action) => {
@@ -77,6 +84,11 @@ export const jobSlice = createSlice({
         (state, action: PayloadAction<JobTypes[]>) => {
           state.standardJobs.loading = false;
           state.standardJobs.data = action.payload;
+          if (Array.isArray(state.allJob)) {
+            state.allJob.push(...action.payload);
+          } else {
+            state.allJob = [...action.payload];
+          }
         }
       )
       .addCase(fetchNonVipJobs.rejected, (state, action) => {
