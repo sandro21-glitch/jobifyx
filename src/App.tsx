@@ -17,6 +17,10 @@ const router = createBrowserRouter([
         path: "/services",
         element: <Services />,
       },
+      {
+        path: "/ad/:id",
+        element: <Services />,
+      },
     ],
   },
 ]);
