@@ -35,6 +35,7 @@ const SingleJob = ({
         jobTitle={jobTitle}
         isVip={isVip}
         jobPublishDate={jobPublishDate}
+        jobId={jobId}
       />
       <JobCompany
         companyName={jobCompanyName}
