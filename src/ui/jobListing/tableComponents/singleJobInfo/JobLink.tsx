@@ -30,6 +30,7 @@ const JobLink = ({ jobTitle, isVip, jobPublishDate, jobId }: JobLinkTypes) => {
       </button>
       <Link
         to={`/ad/${jobId}`}
+        state={jobId}
         className={`${isVip ? "text-primary" : "text-gray-500"} font-medium`}
       >
         {jobTitle}
