@@ -9,13 +9,14 @@ const JobCompany = ({ companyImage, companyName, isVip }: JobCompanyTypes) => {
     <li
       className={`${
         isVip ? "text-primary" : "text-gray-500"
-      } font-medium lg:col-span-2 text-center lg:text-start relative`}
+      } font-medium lg:col-span-2 text-end md:text-center
+       relative flex flex-row-reverse items-center justify-start md:justify-center gap-3`}
     >
-      {companyName}
+      <span className="max-w-[5rem] md:max-w-full">{companyName}</span>
       <img
         src={companyImage}
         alt={`${companyImage} logo`}
-        className="absolute right-0 lg:-left-16 top-0"
+        // className="absolute left-16 top-0 hidden md:block"
         loading="lazy"
       />
     </li>
