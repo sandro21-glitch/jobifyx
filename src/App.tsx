@@ -5,6 +5,7 @@ import Services from "./features/pageServices/Services";
 import Modals from "./features/modals/Modals";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import SingleJobPage from "./features/mainLayout/singleJobPage/SingleJobPage";
 
 const router = createBrowserRouter([
   {
@@ -21,7 +22,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/ad/:id",
-        element: <Services />,
+        element: <SingleJobPage />,
       },
     ],
   },
