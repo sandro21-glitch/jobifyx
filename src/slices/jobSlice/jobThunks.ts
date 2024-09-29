@@ -19,7 +19,6 @@ export const addJobToDatabase = createAsyncThunk<{ job: JobTypes }, JobTypes>(
       };
 
       await set(ref(database, `jobs/${job.jobId}`), newJob);
-      console.log("Job added successfully:", newJob);
 
       return { job: newJob };
     } catch (error: any) {
