@@ -43,7 +43,7 @@ const PostingAdForm = () => {
   const mutation = useMutation({
     mutationFn: () => dispatch(addJobToDatabase(job)),
     onSuccess: () => {
-      // refetch VIP and standard jobs after a successful mutation
+      // refetch VIP and standard jobs
       queryClient.invalidateQueries({ queryKey: ["vipJobs"] });
       queryClient.invalidateQueries({ queryKey: ["standardJobs"] });
     },
