@@ -3,8 +3,10 @@ import { useAppSelector } from "../../../hooks";
 import SingleJobHeader from "./singleJobContent/SingleJobHeader";
 import AllVacancyBtn from "./singleJobContent/AllVacancyBtn";
 import JobInfoTable from "./singleJobContent/jobInfo/JobInfoTable";
-import VacancyDescription from "./singleJobContent/jobInfo/VacancyDescription";
 import VacancyComment from "./singleJobContent/jobInfo/VacancyComment";
+import JobQualifications from "./singleJobContent/jobInfo/JobQualifications";
+import JobResponsibilities from "./singleJobContent/jobInfo/JobResponsibilities";
+import JobFooter from "./singleJobContent/jobInfo/JobFooter";
 
 const SingleJobPage = () => {
   const { state } = useLocation();
@@ -22,14 +24,18 @@ const SingleJobPage = () => {
     jobCompanyName,
     jobCompanyNumber,
     jobDeadline,
-    jobDescription,
     jobId,
     jobPublishDate,
     jobTitle,
+    qualifications,
+    responsibilities,
   } = singleJob;
 
   return (
-    <section className="section-center" style={{ marginTop: "3rem",minHeight:'30vw' }}>
+    <section
+      className="section-center"
+      style={{ marginTop: "3rem", minHeight: "30vw" }}
+    >
       <SingleJobHeader jobTitle={jobTitle} />
       <AllVacancyBtn />
       <JobInfoTable
@@ -38,8 +44,10 @@ const SingleJobPage = () => {
         jobDeadline={jobDeadline}
         jobCompanyName={jobCompanyName}
       />
-      <VacancyDescription jobDescription={jobDescription} />
       <VacancyComment jobComment={jobComment} />
+      <JobResponsibilities responsibilities={responsibilities} />
+      <JobQualifications qualifications={qualifications} />
+      <JobFooter jobCompanyMail={jobCompanyMail} jobTitle={jobTitle} />
     </section>
   );
 };
