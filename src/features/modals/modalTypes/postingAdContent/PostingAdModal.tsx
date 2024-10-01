@@ -2,7 +2,6 @@ import PostingAdForm from "./PostingAdForm";
 import logo from "/logo/logo-no-background.svg";
 import { useAppDispatch } from "../../../../hooks";
 import { setPostingAd } from "../../../../slices/modalsSlice/modalsSlice";
-import MarkdownHelper from "../../../../ui/MarkdownHelper";
 
 const PostingAdModal = () => {
   const dispatch = useAppDispatch();
@@ -34,7 +33,6 @@ const PostingAdModal = () => {
         <hr />
         <PostingAdForm />
       </div>
-      <MarkdownHelper />
     </div>
   );
 };
