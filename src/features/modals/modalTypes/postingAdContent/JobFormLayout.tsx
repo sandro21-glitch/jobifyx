@@ -13,8 +13,6 @@ type JobFormLayoutTypes = {
   setJobTitle: (value: string) => void;
   jobComment: string;
   setJobComment: (value: string) => void;
-  jobDescription: string;
-  setJobDescription: (value: string) => void;
   setJobCompanyImage: (image: string) => void;
   uploading: boolean;
   setUploading: (value: boolean) => void;
@@ -24,6 +22,10 @@ type JobFormLayoutTypes = {
   setIsVip: (value: boolean) => void;
   jobCategoryType: string;
   setJobCategoryType: (value: string) => void;
+  responsibilities: string[];
+  setResponsibilities: (value: string[]) => void;
+  qualifications: string[];
+  setQualifications: (value: string[]) => void;
 };
 const JobFormLayout = ({
   isVip,
@@ -33,7 +35,6 @@ const JobFormLayout = ({
   jobCompanyName,
   jobCompanyNumber,
   jobDeadline,
-  jobDescription,
   jobTitle,
   setCompanyNumber,
   setIsVip,
@@ -43,10 +44,13 @@ const JobFormLayout = ({
   setJobCompanyMail,
   setJobCompanyName,
   setJobDeadline,
-  setJobDescription,
   setJobTitle,
   setUploading,
   uploading,
+  responsibilities,
+  setResponsibilities,
+  qualifications,
+  setQualifications,
 }: JobFormLayoutTypes) => {
   return (
     <div className="grid lg:grid-cols-3 gap-5 w-full">
@@ -66,11 +70,13 @@ const JobFormLayout = ({
           setJobTitle={setJobTitle}
           jobComment={jobComment}
           setJobComment={setJobComment}
-          jobDescription={jobDescription}
-          setJobDescription={setJobDescription}
           setJobCompanyImage={setJobCompanyImage}
           uploading={uploading}
           setUploading={setUploading}
+          responsibilities={responsibilities}
+          setResponsibilities={setResponsibilities}
+          qualifications={qualifications}
+          setQualifications={setQualifications}
         />
       </div>
       <div>
