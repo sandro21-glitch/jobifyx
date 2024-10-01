@@ -5,7 +5,6 @@ import { useAppDispatch } from "../../../../hooks";
 import { addJobToDatabase } from "../../../../slices/jobSlice/jobThunks";
 import { JobTypes } from "../../../../slices/jobSlice/jobTypes";
 import AddJobBtn from "./AddJobBtn";
-import MarkdownPreview from "./markdownPrev/MarkdownPreview";
 import JobFormLayout from "./JobFormLayout";
 
 const PostingAdForm = () => {
@@ -13,12 +12,13 @@ const PostingAdForm = () => {
   const [jobCompanyName, setJobCompanyName] = useState<string>("");
   const [jobCompanyMail, setJobCompanyMail] = useState<string>("");
   const [jobComment, setJobComment] = useState<string>("");
-  const [jobDescription, setJobDescription] = useState<string>("");
   const [jobCompanyNumber, setCompanyNumber] = useState<number>(0);
   const [jobCompanyImage, setJobCompanyImage] = useState<string>("");
   const [jobDeadline, setJobDeadline] = useState<string>("1 თვე");
   const [isVip, setIsVip] = useState<boolean>(false);
   const [jobCategoryType, setJobCategoryType] = useState<string>("");
+  const [responsibilities, setResponsibilities] = useState<string[]>([]);
+  const [qualifications, setQualifications] = useState<string[]>([]);
 
   const [uploading, setUploading] = useState(false);
 
@@ -33,8 +33,9 @@ const PostingAdForm = () => {
     jobCompanyMail,
     jobCompanyNumber,
     jobComment,
-    jobDescription,
     jobCategory: jobCategoryType,
+    qualifications,
+    responsibilities,
   };
 
   const dispatch = useAppDispatch();
@@ -70,8 +71,6 @@ const PostingAdForm = () => {
         setJobTitle={setJobTitle}
         jobComment={jobComment}
         setJobComment={setJobComment}
-        jobDescription={jobDescription}
-        setJobDescription={setJobDescription}
         setJobCompanyImage={setJobCompanyImage}
         uploading={uploading}
         setUploading={setUploading}
@@ -81,19 +80,14 @@ const PostingAdForm = () => {
         setIsVip={setIsVip}
         jobCategoryType={jobCategoryType}
         setJobCategoryType={setJobCategoryType}
+        responsibilities={responsibilities}
+        setResponsibilities={setResponsibilities}
+        qualifications={qualifications}
+        setQualifications={setQualifications}
       />
       <div>
         <AddJobBtn uploading={uploading} />
       </div>
-      {/* Markdown Preview */}
-      <MarkdownPreview
-        jobDescription={jobDescription}
-        jobComment={jobComment}
-        jobTitle={jobTitle}
-        jobCompanyName={jobCompanyName}
-        jobPublishDate={new Date().toLocaleString()}
-        jobDeadline={jobDeadline}
-      />
     </form>
   );
 };
