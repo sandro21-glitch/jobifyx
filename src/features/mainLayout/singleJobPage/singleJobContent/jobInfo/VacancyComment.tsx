@@ -1,4 +1,3 @@
-import ReactMarkdown from "react-markdown";
 
 type VacancyCommentProps = {
   jobComment: string;
@@ -6,9 +5,9 @@ type VacancyCommentProps = {
 
 const VacancyComment = ({ jobComment }: VacancyCommentProps) => {
   return (
-    <ReactMarkdown className="text-[14px] font-medium text-gray-500">
+    <div className="text-[14px] font-medium text-gray-500">
       {jobComment}
-    </ReactMarkdown>
+    </div>
   );
 };
 
