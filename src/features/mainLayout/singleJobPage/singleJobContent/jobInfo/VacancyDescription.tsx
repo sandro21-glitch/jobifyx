@@ -7,7 +7,9 @@ type VacancyDescriptionTypes = {
 const VacancyDescription = ({ jobDescription }: VacancyDescriptionTypes) => {
   return (
     <div>
-      <ReactMarkdown className="text-[14px] font-medium text-gray-500">{jobDescription}</ReactMarkdown>
+      <ReactMarkdown className="text-[14px] font-medium text-gray-500">
+        {jobDescription}
+      </ReactMarkdown>
     </div>
   );
 };
