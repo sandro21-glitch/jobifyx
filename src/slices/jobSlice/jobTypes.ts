@@ -6,9 +6,10 @@ export interface JobTypes {
   jobPublishDate: string;
   jobCompanyMail: string;
   jobComment: string;
-  jobDescription: string;
   jobCompanyNumber: number;
   jobDeadline: string;
   isVip: boolean;
   jobCategory: string;
+  responsibilities: string[];
+  qualifications: string[];
 }
