@@ -19,8 +19,9 @@ interface JobListingTypes {
 }
 
 const JobListing = ({ jobs }: JobListingTypes) => {
-  const isVip = jobs?.some((job) => job.isVip ? true : false)
+  const isVip = jobs?.some((job) => (job.isVip ? true : false));
 
+  if (jobs.length < 1) return <p>ვაკანსიები ვერ მოიძებნა.</p>;
   return (
     <div className="mt-5">
       {/* header */}
