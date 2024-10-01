@@ -1,10 +1,10 @@
 import { useLocation } from "react-router-dom";
 import { useAppSelector } from "../../../hooks";
 import SingleJobHeader from "./singleJobContent/SingleJobHeader";
-import { IoArrowUndoSharp } from "react-icons/io5";
 import AllVacancyBtn from "./singleJobContent/AllVacancyBtn";
 import JobInfoTable from "./singleJobContent/jobInfo/JobInfoTable";
-import VacanctDescription from "./singleJobContent/jobInfo/VacancyDescription";
+import VacancyDescription from "./singleJobContent/jobInfo/VacancyDescription";
+import VacancyComment from "./singleJobContent/jobInfo/VacancyComment";
 
 const SingleJobPage = () => {
   const { state } = useLocation();
@@ -29,7 +29,7 @@ const SingleJobPage = () => {
   } = singleJob;
 
   return (
-    <section className="section-center" style={{ marginTop: "3rem" }}>
+    <section className="section-center" style={{ marginTop: "3rem",minHeight:'30vw' }}>
       <SingleJobHeader jobTitle={jobTitle} />
       <AllVacancyBtn />
       <JobInfoTable
@@ -38,7 +38,8 @@ const SingleJobPage = () => {
         jobDeadline={jobDeadline}
         jobCompanyName={jobCompanyName}
       />
-      <VacanctDescription jobDescription={jobDescription} />
+      <VacancyDescription jobDescription={jobDescription} />
+      <VacancyComment jobComment={jobComment} />
     </section>
   );
 };
