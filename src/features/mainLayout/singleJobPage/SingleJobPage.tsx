@@ -6,7 +6,6 @@ import JobInfoTable from "./singleJobContent/jobInfo/JobInfoTable";
 import VacancyComment from "./singleJobContent/jobInfo/VacancyComment";
 import JobQualifications from "./singleJobContent/jobInfo/JobQualifications";
 import JobResponsibilities from "./singleJobContent/jobInfo/JobResponsibilities";
-import JobFooter from "./singleJobContent/jobInfo/JobFooter";
 
 const SingleJobPage = () => {
   const { state } = useLocation();
@@ -44,10 +43,13 @@ const SingleJobPage = () => {
         jobDeadline={jobDeadline}
         jobCompanyName={jobCompanyName}
       />
-      <VacancyComment jobComment={jobComment} />
+      <p className="text-[14px] text-gray-500">
+        <span className="font-bold">"{jobCompanyName}"</span> აცხადებს ვაკანსიას{" "}
+        {jobTitle}-ის პოზიციაზე.
+      </p>
       <JobResponsibilities responsibilities={responsibilities} />
       <JobQualifications qualifications={qualifications} />
-      <JobFooter jobCompanyMail={jobCompanyMail} jobTitle={jobTitle} />
+      <VacancyComment jobComment={jobComment} />
     </section>
   );
 };
