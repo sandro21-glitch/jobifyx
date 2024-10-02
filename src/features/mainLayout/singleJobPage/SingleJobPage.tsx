@@ -47,9 +47,14 @@ const SingleJobPage = () => {
         <span className="font-bold">"{jobCompanyName}"</span> აცხადებს ვაკანსიას{" "}
         {jobTitle}-ის პოზიციაზე.
       </p>
+      <VacancyComment jobComment={jobComment} />
       <JobResponsibilities responsibilities={responsibilities} />
       <JobQualifications qualifications={qualifications} />
-      <VacancyComment jobComment={jobComment} />
+      <p className="text-[14px] text-gray-500">
+        დაინტერესებულმა პირებმა გამოგვიგზავნეთ CV ელექტრონულ მისამართზე:{" "}
+        <span className="font-bold text-primary">{jobCompanyMail}</span>.
+        გთხოვთ, მიუთითეთ ვაკანსიის დასახელება სათაურის ველში.
+      </p>
     </section>
   );
 };
