@@ -9,7 +9,7 @@ const VacancyComment = ({ jobComment }: VacancyCommentProps) => {
   const parts = jobComment.split(emailRegex);
 
   return (
-    <div className="text-[14px] font-medium text-gray-500 mt-10">
+    <div className="text-[14px] font-medium text-gray-500 mt-5">
       {parts.map((part, index) =>
         emailRegex.test(part) ? (
           <span key={index} className="font-bold text-blue-500">
