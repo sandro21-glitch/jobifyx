@@ -50,7 +50,7 @@ const SingleJobPage = () => {
       <VacancyComment jobComment={jobComment} />
       <JobResponsibilities responsibilities={responsibilities} />
       <JobQualifications qualifications={qualifications} />
-      <p className="text-[14px] text-gray-500">
+      <p className="text-[14px] text-gray-500 mt-5">
         დაინტერესებულმა პირებმა გამოგვიგზავნეთ CV ელექტრონულ მისამართზე:{" "}
         <span className="font-bold text-primary">{jobCompanyMail}</span>.
         გთხოვთ, მიუთითეთ ვაკანსიის დასახელება სათაურის ველში.
