@@ -1,21 +1,9 @@
+import { JobTypes } from "../../slices/jobSlice/jobTypes";
 import JobHeader from "./tableComponents/JobHeader";
 import JobList from "./tableComponents/JobList";
 
 interface JobListingTypes {
-  jobs: {
-    jobId: string;
-    jobTitle: string;
-    jobCompanyName: string;
-    jobCompanyImage: string;
-    jobPublishDate: string;
-    jobCompanyMail: string;
-    jobComment: string;
-    jobDescription: string;
-    jobCompanyNumber: number;
-    jobDeadline: string;
-    isVip: boolean;
-    jobCategory: string;
-  }[];
+  jobs: JobTypes[];
 }
 
 const JobListing = ({ jobs }: JobListingTypes) => {
