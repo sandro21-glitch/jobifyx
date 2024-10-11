@@ -13,10 +13,7 @@ const JobResponsibilities = ({
       <ul className="list-decimal list-inside flex flex-col gap-1">
         {responsibilities.map((qualification, index) => {
           return (
-            <li
-              key={index}
-              className="text-[14px] font-medium text-gray-500"
-            >
+            <li key={index} className="text-[14px] font-medium text-gray-500">
               {qualification}
             </li>
           );
