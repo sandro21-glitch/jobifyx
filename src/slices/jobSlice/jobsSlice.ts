@@ -10,6 +10,7 @@ interface JobsState {
     loading: boolean;
     error: string | null;
   };
+  favoriteJobs: JobTypes[] | null;
 }
 
 const initialState: JobsState = {
@@ -20,12 +21,20 @@ const initialState: JobsState = {
     error: null,
     loading: false,
   },
+  favoriteJobs: null,
 };
 
 export const jobSlice = createSlice({
   name: "job",
   initialState,
-  reducers: {},
+  reducers: {
+    addFavoriteJobs: (state, action: PayloadAction<string>) => {
+      const currJob = state.allJob?.find((job) => job.jobId === action.payload);
+      if (currJob) {
+        state.favoriteJobs?.push(currJob);
+      }
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(addJobToDatabase.pending, (state) => {
@@ -64,6 +73,6 @@ export const jobSlice = createSlice({
   },
 });
 
-export const {} = jobSlice.actions;
+export const { addFavoriteJobs } = jobSlice.actions;
 
 export default jobSlice.reducer;
