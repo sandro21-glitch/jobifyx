@@ -2,7 +2,10 @@ import { BiSolidStar, BiStar } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import JobBadges from "./jobLinkContent/JobBadges";
 import { useAppDispatch, useAppSelector } from "../../../../hooks";
-import { addFavoriteJobs } from "../../../../slices/jobSlice/jobsSlice";
+import {
+  addFavoriteJobs,
+  removeFavoriteJobs,
+} from "../../../../slices/jobSlice/jobsSlice";
 
 type JobLinkTypes = {
   jobTitle: string;
@@ -27,12 +30,16 @@ const JobLink = ({ jobTitle, isVip, jobPublishDate, jobId }: JobLinkTypes) => {
   const isNewJob =
     (Date.now() - publishDate.getTime()) / (1000 * 60 * 60 * 24) <= 5;
 
+  const isJobSaved = favJobs.find((job) => job.jobId === jobId);
+
   const dispatch = useAppDispatch();
   const handleAddFavoriteJob = () => {
-    dispatch(addFavoriteJobs(jobId));
+    if (isJobSaved) {
+      dispatch(removeFavoriteJobs(jobId));
+    } else {
+      dispatch(addFavoriteJobs(jobId));
+    }
   };
-
-  const isJobSaved = favJobs.find((job) => job.jobId === jobId);
 
   return (
     <li className="lg:col-span-3 col-span-1 relative flex items-center">
