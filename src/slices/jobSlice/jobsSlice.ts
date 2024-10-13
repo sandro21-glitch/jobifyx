@@ -1,6 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { JobTypes } from "./jobTypes";
 import { addJobToDatabase, fetchNonVipJobs, fetchVipJobs } from "./jobThunks";
+import { loadFromLocalStorage, saveToLocalStorage } from "../../utils/localStorageUtils";
+
+const FAVORITE_JOBS_KEY = "favoriteJobs";
 
 interface JobsState {
   vipJobs: JobTypes[] | null;
@@ -21,7 +24,7 @@ const initialState: JobsState = {
     error: null,
     loading: false,
   },
-  favoriteJobs: [],
+  favoriteJobs: loadFromLocalStorage<JobTypes[]>(FAVORITE_JOBS_KEY) || [],
 };
 
 export const jobSlice = createSlice({
@@ -32,6 +35,8 @@ export const jobSlice = createSlice({
       const currJob = state.allJob?.find((job) => job.jobId === action.payload);
       if (currJob) {
         state.favoriteJobs?.push(currJob);
+        // Save updated favorite jobs to localStorage
+        saveToLocalStorage(FAVORITE_JOBS_KEY, state.favoriteJobs);
       }
     },
   },
