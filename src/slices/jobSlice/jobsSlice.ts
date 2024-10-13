@@ -10,7 +10,7 @@ interface JobsState {
     loading: boolean;
     error: string | null;
   };
-  favoriteJobs: JobTypes[] | null;
+  favoriteJobs: JobTypes[];
 }
 
 const initialState: JobsState = {
@@ -21,7 +21,7 @@ const initialState: JobsState = {
     error: null,
     loading: false,
   },
-  favoriteJobs: null,
+  favoriteJobs: [],
 };
 
 export const jobSlice = createSlice({
