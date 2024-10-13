@@ -1,7 +1,7 @@
-import { BiStar } from "react-icons/bi";
+import { BiSolidStar, BiStar } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import JobBadges from "./jobLinkContent/JobBadges";
-import { useAppDispatch } from "../../../../hooks";
+import { useAppDispatch, useAppSelector } from "../../../../hooks";
 import { addFavoriteJobs } from "../../../../slices/jobSlice/jobsSlice";
 
 type JobLinkTypes = {
@@ -12,6 +12,8 @@ type JobLinkTypes = {
 };
 
 const JobLink = ({ jobTitle, isVip, jobPublishDate, jobId }: JobLinkTypes) => {
+  const favJobs = useAppSelector((store) => store.jobs.favoriteJobs);
+
   // Parse the jobPublishDate using Date constructor
   const publishDate = new Date(jobPublishDate);
 
@@ -25,14 +27,20 @@ const JobLink = ({ jobTitle, isVip, jobPublishDate, jobId }: JobLinkTypes) => {
   const isNewJob =
     (Date.now() - publishDate.getTime()) / (1000 * 60 * 60 * 24) <= 5;
 
-    const dispatch = useAppDispatch()
-    const handleAddFavoriteJob = () => {
-      dispatch(addFavoriteJobs(jobId))
-    }
+  const dispatch = useAppDispatch();
+  const handleAddFavoriteJob = () => {
+    dispatch(addFavoriteJobs(jobId));
+  };
+
+  const isJobSaved = favJobs.find((job) => job.jobId === jobId);
+
   return (
     <li className="lg:col-span-3 col-span-1 relative flex items-center">
-      <button onClick={handleAddFavoriteJob} className="absolute -left-5 text-gray-500 text-[16px] mr-5">
-        <BiStar />
+      <button
+        onClick={handleAddFavoriteJob}
+        className="absolute -left-5 text-gray-500 text-[16px] mr-5"
+      >
+        {isJobSaved ? <BiSolidStar className="text-yellow-500" /> : <BiStar />}
       </button>
       <Link
         to={`/ad/${jobId}`}
