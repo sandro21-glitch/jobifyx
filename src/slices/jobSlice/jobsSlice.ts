@@ -48,7 +48,7 @@ export const jobSlice = createSlice({
         state.favoriteJobs =
           state.favoriteJobs?.filter((job) => job.jobId !== action.payload) ||
           [];
-        // Save updated favorite jobs to localStorage
+        // save updated favorite jobs to localStorage
         saveToLocalStorage(FAVORITE_JOBS_KEY, state.favoriteJobs);
       }
     },
