@@ -4,16 +4,17 @@ import JobList from "./tableComponents/JobList";
 
 interface JobListingTypes {
   jobs: JobTypes[];
+  isFav: boolean;
 }
 
-const JobListing = ({ jobs }: JobListingTypes) => {
-  const isVip = jobs?.some((job) => (job.isVip ? true : false));
+const JobListing = ({ jobs, isFav }: JobListingTypes) => {
+  const isVip = !isFav && jobs?.some((job) => (job.isVip ? true : false));
 
   if (jobs.length < 1) return <p>ვაკანსიები ვერ მოიძებნა.</p>;
   return (
     <div className="mt-5">
       {/* header */}
-      <JobHeader isVip={isVip} />
+      <JobHeader isVip={isVip} isFav={isFav} />
       <JobList jobs={jobs} />
     </div>
   );
